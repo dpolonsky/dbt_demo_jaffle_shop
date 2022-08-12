@@ -1,0 +1,26 @@
+config:
+  use_colors: true
+  debug: true
+  version_check: true
+
+jaffle_shop:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: dwh
+      password: ''
+      port: 5432
+      dbname: dwh
+      schema: dbt_test
+      threads: 5
+    test2:
+      type: redshift
+      host: "{{ env_var('REDSHIFT_TEST2_HOST') }}"
+      user: "{{ env_var('REDSHIFT_TEST2_USER') }}"
+      pass: "{{ env_var('REDSHIFT_TEST2_PASSWORD') }}"
+      dbname: "{{ env_var('REDSHIFT_TEST2_DB') }}"
+      port: 5439
+      schema: dbt_test
+      threads: 5
